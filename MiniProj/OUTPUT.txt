@@ -1,0 +1,312 @@
+DROP DATABASE
+CREATE DATABASE
+You are now connected to database "smart_phone_ecommerce" as user "postgres".
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+Experiment 6
+INSERT 0 4
+INSERT 0 4
+INSERT 0 4
+INSERT 0 4
+INSERT 0 4
+INSERT 0 4
+INSERT 0 4
+INSERT 0 4
+INSERT 0 4
+ item_id | item_price | p_id | s_id 
+---------+------------+------+------
+       1 |      28990 |    1 |    1
+       2 |      20990 |    2 |    2
+       3 |      11999 |    3 |    3
+       4 |      55990 |    4 |    4
+(4 rows)
+
+ s_id | s_name |     s_email      | s_password | s_contact  | s_warehouse 
+------+--------+------------------+------------+------------+-------------
+    1 | Rahul  | rahul@gmail.com  | password   | 9983747382 | Mumbai
+    2 | Rohan  | rohan@gmail.com  | password   | 9983747383 | Mumbai
+    3 | Rohit  | rohit@gmail.com  | password   | 9983747384 | Mumbai
+    4 | Rakesh | rakesh@gmail.com | password   | 9983747385 | Mumbai
+(4 rows)
+
+       p_name       
+--------------------
+ Samsung Galaxy A70
+ OPPO F11 Pro
+ Redmi Note 7S 
+ Sony Xperia Z3+
+(4 rows)
+
+ cart_id | number_of_items | c_id 
+---------+-----------------+------
+       1 |               1 |    1
+       2 |               2 |    2
+       3 |               3 |    3
+       4 |               4 |    4
+(4 rows)
+
+ order_id | payment_status | cart_id 
+----------+----------------+---------
+        1 | complete       |       1
+        2 | incomplete     |       2
+        3 | incomplete     |       3
+        4 | complete       |       4
+(4 rows)
+
+ c_id | c_wallet | c_contact  | c_address | first_name | last_name  | c_password |      c_email       
+------+----------+------------+-----------+------------+------------+------------+--------------------
+    1 |   800000 | 9856457851 | Mumbai    | Aritro     | Biswas     | hash       | aritro13@gmail.com
+    2 |    63000 | 9824575412 | Hydrabad  | Rohan      | Katkam     | hash       | rohan@gmail.com
+    3 |    75225 | 4575412632 | Pune      | Rohit      | Gupta      | hash       | rohit@gupta
+    4 |    54655 | 2365478594 | Rajasthan | Advait     | Maindalkar | hash       | advait@gmail.com
+(4 rows)
+
+ p_id | s_id 
+------+------
+    1 |    1
+    2 |    2
+    3 |    3
+    4 |    4
+(4 rows)
+
+ item_id | order_id 
+---------+----------
+       1 |        1
+       2 |        2
+       3 |        3
+       4 |        4
+(4 rows)
+
+ quantity | cart_id | p_id 
+----------+---------+------
+        1 |       1 |    1
+        2 |       2 |    2
+        3 |       3 |    3
+        4 |       4 |    4
+(4 rows)
+
+Experiment 6
+INSERT 0 1
+ item_id | item_price | p_id | s_id 
+---------+------------+------+------
+       1 |      28990 |    1 |    1
+       2 |      20990 |    2 |    2
+       3 |      11999 |    3 |    3
+       4 |      55990 |    4 |    4
+       5 |      30000 |    1 |    2
+(5 rows)
+
+INSERT 0 1
+ item_id | item_price | p_id | s_id 
+---------+------------+------+------
+       1 |      28990 |    1 |    1
+       2 |      20990 |    2 |    2
+       3 |      11999 |    3 |    3
+       4 |      55990 |    4 |    4
+       5 |      30000 |    1 |    2
+(5 rows)
+
+INSERT 0 1
+       p_name       
+--------------------
+ Samsung Galaxy A70
+ OPPO F11 Pro
+ Redmi Note 7S 
+ Sony Xperia Z3+
+ OnePlus 7T
+(5 rows)
+
+Make changes in DB if Aritro Biswas adds OPPO F11 Pro and orders all items in the cart
+INSERT 0 1
+UPDATE 1
+INSERT 0 1
+INSERT 0 1
+ item_id | item_price | p_id | s_id 
+---------+------------+------+------
+       1 |      28990 |    1 |    1
+       2 |      20990 |    2 |    2
+       3 |      11999 |    3 |    3
+       4 |      55990 |    4 |    4
+       5 |      30000 |    1 |    2
+(5 rows)
+
+UPDATE 1
+ c_id | c_wallet | c_contact  | c_address | first_name | last_name  | c_password |      c_email       
+------+----------+------------+-----------+------------+------------+------------+--------------------
+    1 |   750020 | 9856457851 | Mumbai    | Aritro     | Biswas     | hash       | aritro13@gmail.com
+    2 |    63000 | 9824575412 | Hydrabad  | Rohan      | Katkam     | hash       | rohan@gmail.com
+    3 |    75225 | 4575412632 | Pune      | Rohit      | Gupta      | hash       | rohit@gupta
+    4 |    54655 | 2365478594 | Rajasthan | Advait     | Maindalkar | hash       | advait@gmail.com
+(4 rows)
+
+UPDATE 2
+ order_id | payment_status | cart_id 
+----------+----------------+---------
+        2 | incomplete     |       2
+        3 | incomplete     |       3
+        4 | complete       |       4
+        1 | Complete       |       1
+        5 | Complete       |       1
+(5 rows)
+
+Experiment 6
+List products which have price greator than 20000
+       p_name       
+--------------------
+ Samsung Galaxy A70
+ OPPO F11 Pro
+ Sony Xperia Z3+
+ Samsung Galaxy A70
+(4 rows)
+
+List the products sold by Rohan
+       p_name       | s_name 
+--------------------+--------
+ OPPO F11 Pro       | Rohan
+ Samsung Galaxy A70 | Rohan
+(2 rows)
+
+Give order detals for customer Aritro Biswas
+ payment_status | first_name | last_name | cart_id 
+----------------+------------+-----------+---------
+ Complete       | Aritro     | Biswas    |       1
+ Complete       | Aritro     | Biswas    |       1
+(2 rows)
+
+Experiment 7
+List the order details which have payment status as complete for customer Aritro Biwas and Advait Mainalkar
+ cart_id | payment_status 
+---------+----------------
+       4 | complete
+       1 | Complete
+       1 | Complete
+(3 rows)
+
+Display products that are not sold by Rohit
+ p_id 
+------
+    4
+    1
+    5
+    2
+(4 rows)
+
+List the products which are present in the cart of Advait
+ p_id 
+------
+    4
+(1 row)
+
+Experiment 8
+List the products which are not present in the cart of Advait
+ p_id 
+------
+    3
+    1
+    2
+(3 rows)
+
+List the products which are in Advaits cart but not in Aritros
+ p_id 
+------
+    4
+(1 row)
+
+List the products sold by Rakesh which have price > 10000
+ p_id 
+------
+    4
+(1 row)
+
+Experiment 9
+List the number of times Aritro placed ordered
+ times_ordered 
+---------------
+             2
+(1 row)
+
+Calculate total amount of order for Rohit
+ totalamount 
+-------------
+       35997
+(1 row)
+
+Calculate average item cost for Samsung Galaxy A70
+ average_cost 
+--------------
+        29495
+(1 row)
+
+Experiment 10
+List the number of item instances of all products
+ p_id | count 
+------+-------
+    3 |     1
+    4 |     1
+    2 |     1
+    1 |     2
+(4 rows)
+
+List details of the products which are ordered more than once
+    p_name    
+--------------
+ OPPO F11 Pro
+(1 row)
+
+List the total amount of items > 15000 in the cart
+ cart_amount 
+-------------
+       35997
+      223960
+       28990
+       41980
+(4 rows)
+
+Experiment 11
+Create View to display customers living in mumbai
+CREATE VIEW
+ c_id | c_wallet | c_contact  | c_address | first_name | last_name | c_password |      c_email       
+------+----------+------------+-----------+------------+-----------+------------+--------------------
+    1 |   750020 | 9856457851 | Mumbai    | Aritro     | Biswas    | hash       | aritro13@gmail.com
+(1 row)
+
+Create view to display products sold by the seller with price
+CREATE VIEW
+ s_name |       p_name       | item_price 
+--------+--------------------+------------
+ Rahul  | Samsung Galaxy A70 |      28990
+ Rohan  | OPPO F11 Pro       |      20990
+ Rohit  | Redmi Note 7S      |      11999
+ Rakesh | Sony Xperia Z3+    |      55990
+ Rohan  | Samsung Galaxy A70 |      30000
+(5 rows)
+
+Create view for average item cost
+CREATE VIEW
+       p_name       | avg_cost 
+--------------------+----------
+ Samsung Galaxy A70 |    29495
+ Redmi Note 7S      |    11999
+ OPPO F11 Pro       |    20990
+ Sony Xperia Z3+    |    55990
+(4 rows)
+
+Create view to display products in customers cart and its quantity
+CREATE VIEW
+       p_name       | cart_id | quantity 
+--------------------+---------+----------
+ Samsung Galaxy A70 |       1 |        1
+ OPPO F11 Pro       |       2 |        2
+ Redmi Note 7S      |       3 |        3
+ Sony Xperia Z3+    |       4 |        4
+ OPPO F11 Pro       |       1 |        1
+(5 rows)
+
+
