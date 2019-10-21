@@ -72,7 +72,7 @@ CREATE TABLE cart_contains_product (
 );
 
 
-\echo 'Experiment 6'
+\echo 'Experiment 4'
 
 INSERT INTO seller (s_name, s_email, s_password, s_contact, s_warehouse)
     VALUES ('Rahul', 'rahul@gmail.com', 'password', 9983747382, 'Mumbai'), 
@@ -176,9 +176,9 @@ SELECT * FROM order_contains_items;
 SELECT * FROM cart_contains_product;
 
 
-\echo 'Experiment 6'
+\echo 'Experiment 5'
 
-
+\echo 'Insert new item'
 INSERT INTO item (item_price,s_ID,p_ID)
 VALUES  (30000, 2,1);
 SELECT * FROM item;
@@ -187,6 +187,7 @@ INSERT INTO seller_keeps_products (s_ID,p_ID)
 VALUES  ( 2,1);
 SELECT * FROM item;
 
+\echo 'Insert new Product'
 INSERT INTO product (p_name, p_ram, p_display, camera_rear, camera_front, p_battery, p_processor, p_desc, p_in_the_box)
 VALUES ('OnePlus 7T',
 '8 GB RAM ',
@@ -511,3 +512,53 @@ cart, customer, product,cart_contains_product as ccp
 where product.p_ID = ccp.p_ID and ccp.cart_ID = cart.cart_ID and cart.c_ID = customer.c_ID;
 
 select * from cust_cart;
+
+\echo 'Perform Tranzaction form one order'
+
+begin work;
+
+INSERT INTO cart_contains_product (cart_ID,p_ID,quantity)
+VALUES (1,2,1);
+
+UPDATE cart
+SET number_of_items = number_of_items + 1
+WHERE cart_ID = 1;
+
+INSERT INTO porder (payment_status ,cart_ID )
+VALUES ('Processing', 1);
+
+INSERT INTO order_contains_items (item_ID ,order_ID )
+VALUES (2, 4);
+
+SELECT * FROM item;
+
+SAVEPOINT before_wallet_update;
+
+UPDATE customer
+SET c_wallet = c_wallet - amount.totalamount
+FROM (
+    SELECT sum(item_price * dist.quantity) as totalamount
+    from (
+        SELECT DISTINCT ON (item.p_ID) item.p_ID, pq.quantity, item_price
+        FROM (
+            SELECT p_ID, quantity 
+            FROM cart_contains_product
+            WHERE cart_ID in(
+                SELECT cart_ID
+                FROM cart 
+                WHERE c_ID in (
+                    SELECT c_ID 
+                    FROM customer as c
+                    WHERE first_name = 'Aritro' and last_name = 'Biswas'
+                )
+            )   
+
+        ) as pq, item
+        WHERE item.p_ID = pq.p_ID
+    ) as dist
+) as amount
+WHERE first_name = 'Aritro' and last_name = 'Biswas';
+
+rollback to before_wallet_update;
+Select * from customer;
+commit;
