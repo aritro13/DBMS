@@ -10,7 +10,7 @@ CREATE TABLE
 CREATE TABLE
 CREATE TABLE
 CREATE TABLE
-Experiment 6
+Experiment 4
 INSERT 0 4
 INSERT 0 4
 INSERT 0 4
@@ -92,7 +92,8 @@ INSERT 0 4
         4 |       4 |    4
 (4 rows)
 
-Experiment 6
+Experiment 5
+Insert new item
 INSERT 0 1
  item_id | item_price | p_id | s_id 
 ---------+------------+------+------
@@ -113,6 +114,7 @@ INSERT 0 1
        5 |      30000 |    1 |    2
 (5 rows)
 
+Insert new Product
 INSERT 0 1
        p_name       
 --------------------
@@ -309,4 +311,33 @@ CREATE VIEW
  OPPO F11 Pro       |       1 |        1
 (5 rows)
 
+Experiment 12
+
+Perform Tranzaction form one order
+BEGIN
+INSERT 0 1
+UPDATE 1
+INSERT 0 1
+INSERT 0 1
+ item_id | item_price | p_id | s_id 
+---------+------------+------+------
+       1 |      28990 |    1 |    1
+       2 |      20990 |    2 |    2
+       3 |      11999 |    3 |    3
+       4 |      55990 |    4 |    4
+       5 |      30000 |    1 |    2
+(5 rows)
+
+SAVEPOINT
+UPDATE 1
+ROLLBACK
+ c_id | c_wallet | c_contact  | c_address | first_name | last_name  | c_password |      c_email       
+------+----------+------------+-----------+------------+------------+------------+--------------------
+    2 |    63000 | 9824575412 | Hydrabad  | Rohan      | Katkam     | hash       | rohan@gmail.com
+    3 |    75225 | 4575412632 | Pune      | Rohit      | Gupta      | hash       | rohit@gupta
+    4 |    54655 | 2365478594 | Rajasthan | Advait     | Maindalkar | hash       | advait@gmail.com
+    1 |   750020 | 9856457851 | Mumbai    | Aritro     | Biswas     | hash       | aritro13@gmail.com
+(4 rows)
+
+COMMIT
 

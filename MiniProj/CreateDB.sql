@@ -215,7 +215,7 @@ INSERT INTO porder (payment_status ,cart_ID )
 VALUES ('Processing', 1);
 
 INSERT INTO order_contains_items (item_ID ,order_ID )
-VALUES (2, 4);
+VALUES (2, 5);
 
 SELECT * FROM item;
 
@@ -513,22 +513,23 @@ where product.p_ID = ccp.p_ID and ccp.cart_ID = cart.cart_ID and cart.c_ID = cus
 
 select * from cust_cart;
 
+\echo 'Experiment 12'
 \echo 'Perform Tranzaction form one order'
 
 begin work;
 
 INSERT INTO cart_contains_product (cart_ID,p_ID,quantity)
-VALUES (1,2,1);
+VALUES (1,3,2);
 
 UPDATE cart
-SET number_of_items = number_of_items + 1
-WHERE cart_ID = 1;
+SET number_of_items = number_of_items + 2
+WHERE cart_ID = 2;
 
 INSERT INTO porder (payment_status ,cart_ID )
 VALUES ('Processing', 1);
 
 INSERT INTO order_contains_items (item_ID ,order_ID )
-VALUES (2, 4);
+VALUES (3, 6);
 
 SELECT * FROM item;
 
