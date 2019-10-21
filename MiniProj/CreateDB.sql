@@ -514,7 +514,7 @@ where product.p_ID = ccp.p_ID and ccp.cart_ID = cart.cart_ID and cart.c_ID = cus
 select * from cust_cart;
 
 \echo 'Experiment 12'
-\echo 'Perform Tranzaction form one order'
+\echo 'Perform Transaction for one order'
 
 begin work;
 
